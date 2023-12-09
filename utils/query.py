@@ -28,20 +28,13 @@ try:
     
     # Test
     # cursor.execute(f"""
-    # SELECT S.nama_brand
-    # FROM SPONSOR S
-    # WHERE S.id NOT IN (
-    #     SELECT id_sponsor
-    #     FROM ATLET_SPONSOR ATS
-    #     JOIN ATLET A ON A.id = ATS.id_atlet
-    #     NATURAL JOIN MEMBER M
-    #     WHERE M.email = 'kballeinea@dell.com'
-    # );
+    #  SELECT R.hotel_name,R.price, R.floor, HF.facility_name
+    # FROM ROOM R
+    # JOIN HOTEL H ON R.hotel_name = H.hotel_name AND R.hotel_branch = H.hotel_branch
+    # JOIN hotel_facilities HF ON HF.hotel_name = H.hotel_name AND HF.hotel_branch = H.hotel_branch;
     # """)
     # record = cursor.fetchall()
-    # print(record, type(record), type(record[0]))
-    # list_sponsor = [i[0] for i in record]
-    # print(list_sponsor)
+    # print(record)
 
 except (Exception, Error) as error:
     print("Error while connecting to PostgreSQL", error)

@@ -89,60 +89,29 @@
 		
 			  <table class="table mt-2 font-bold w-full">
 				<thead>
-				  <tr>
-					<th class="py-2 px-4 bg-blue-200">Nomor</th>
-					<th class="py-2 px-4 bg-blue-200">Harga</th>
-					<th class="py-2 px-4 bg-blue-200">Lantai</th>
-					<th class="py-2 px-4 bg-blue-200">Fasilitas</th>
-					<th class="py-2 px-4 bg-blue-200">Action</th>
-				  </tr>
+					<tr>
+						<th class="py-2 px-4 bg-blue-200">Nomor</th>
+						<th class="py-2 px-4 bg-blue-200">Harga</th>
+						<th class="py-2 px-4 bg-blue-200">Lantai</th>
+						<th class="py-2 px-4 bg-blue-200">Fasilitas</th>
+						<th class="py-2 px-4 bg-blue-200">Action</th>
+					</tr>
 				</thead>
 				<tbody>
-					<tr class="border-b">
-					  <td class="py-2 px-4 text-center">1</td>
-					  <td class="py-2 px-4 text-center">Rp. 1.000.000</td>
-					  <td class="py-2 px-4 text-center">1</td>
-					  <td class="py-2 px-4 text-center">AC, TV, Wifi</td>
-					  <td class="py-2 px-4 text-center">
-						<button type="button" class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
-						<button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
-					  </td>
-					</tr>
-		
-					<tr class="border-b">
-						<td class="py-2 px-4 text-center">2</td>
-						<td class="py-2 px-4 text-center">Rp. 1.400.000</td>
-						<td class="py-2 px-4 text-center">3</td>
-						<td class="py-2 px-4 text-center">AC, TV, Wifi, Heater, Balkon</td>
-						<td class="py-2 px-4 text-center">
-						  <button type="button" class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
-						  <button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
-						</td>
-					  </tr>
-					
-					  <tr class="border-b">
-						<td class="py-2 px-4 text-center">3</td>
-						<td class="py-2 px-4 text-center">Rp. 2.200.000</td>
-						<td class="py-2 px-4 text-center">5</td>
-						<td class="py-2 px-4 text-center">AC, TV, Wifi, Heater, Balon, Sauna</td>
-						<td class="py-2 px-4 text-center">
-						  <button type="button" class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
-						  <button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
-						</td>
-					  </tr>
-		  
-					  <tr class="border-b">
-						  <td class="py-2 px-4 text-center">4</td>
-						  <td class="py-2 px-4 text-center">Rp. 900.000</td>
-						  <td class="py-2 px-4 text-center">1</td>
-						  <td class="py-2 px-4 text-center">AC, TV, Wifi</td>
-						  <td class="py-2 px-4 text-center">
-							<button type="button" class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
-							<button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
-						  </td>
+					{% for kamar in data_kamar %}
+						<tr class="border-b">
+							<td class="py-2 px-4 text-center">{{ forloop.counter }}</td>
+							<td class="py-2 px-4 text-center">{{ kamar.price }}</td>
+							<td class="py-2 px-4 text-center">{{ kamar.floor }}</td>
+							<td class="py-2 px-4 text-center">{{ kamar.facility_name }}</td>
+							<td class="py-2 px-4 text-center">
+								<button type="button" class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
+								<button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
+							</td>
 						</tr>
+					{% endfor %}
 				</tbody>
-			  </table>
+			</table>
 		
 			</div>
 		
