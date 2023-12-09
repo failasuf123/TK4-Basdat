@@ -3,11 +3,17 @@ from psycopg2 import Error
 
 try:
     # Connect to an existing database
+    # connection = psycopg2.connect(user="postgres",
+    #                               password="AeE1f32gg1db5-222ef5BA2F2*eGfD64",
+    #                               host="monorail.proxy.rlwy.net",
+    #                               port="40602",
+    #                               database="railway")
+
     connection = psycopg2.connect(user="postgres",
-                                  password="AeE1f32gg1db5-222ef5BA2F2*eGfD64",
-                                  host="monorail.proxy.rlwy.net",
-                                  port="40602",
-                                  database="railway")
+                                  password="tk4basdatkelompok",
+                                  host="db.lwwncffkfxoaqkovrloj.supabase.co",
+                                  port="5432",
+                                  database="postgres")
 
     # Create a cursor to perform database operations
     cursor = connection.cursor()
