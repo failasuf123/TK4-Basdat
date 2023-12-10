@@ -83,19 +83,20 @@
 			  <h1 class="text-xl font-bold mb-6 text-center">FORM TAMBAH KAMAR</h1>
 		
 			  <form action="" method="post" class="flex flex-col">
+				{% csrf_token %}
 				<div class="mb-4">
 				  <label for="nomor-kamar" class="block text-sm font-semibold text-gray-600">Nomor Kamar</label>
-				  <input type="text" class="form-input mt-1 p-2 w-full border rounded" name="nomor-kamar" id="nomor-kamar" placeholder="masukan nomor kamar">
+				  <input type="text" class="form-input mt-1 p-2 w-full border rounded" name="nomor_kamar" id="nomor-kamar" placeholder="masukan nomor kamar" required>
 				</div>
 		
 				<div class="mb-4">
 				  <label for="harga" class="block text-sm font-semibold text-gray-600">Harga</label>
-				  <input type="text" class="form-input mt-1 p-2 w-full border rounded" name="harga" id="harga"placeholder="masukan harga">
+				  <input type="text" class="form-input mt-1 p-2 w-full border rounded" name="harga" id="harga"placeholder="masukan harga" required>
 				</div>
 		
 				<div class="mb-4">
 				  <label for="lantai" class="block text-sm font-semibold text-gray-600">Lantai</label>
-				  <input type="number" class="form-input mt-1 p-2 w-full border rounded" name="lantai" id="lantai" placeholder="masukan lantai kamar">
+				  <input type="number" class="form-input mt-1 p-2 w-full border rounded" name="lantai" id="lantai" placeholder="masukan lantai kamar" required>
 				</div>
 				
 				<div class="mt-5 flex flex-row self-end">
@@ -107,8 +108,11 @@
 		  
 			  </form>
 			</div>
+
+			
 		
 		  </div>
+		
 		<!-- END CODE -->
     </div>
         
