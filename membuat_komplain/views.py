@@ -6,7 +6,7 @@ from django.contrib import messages
 # Create your views here.
 def show_komplain_form(request):
     # Email dummy bypass login
-    custemail = 'rizard0@youku.com'
+    custemail = 'sbroadberry2@sitemeter.com'
     with connection.cursor() as cursor:
         cursor.execute("""
 select u.fname, u.lname from user_sistel u

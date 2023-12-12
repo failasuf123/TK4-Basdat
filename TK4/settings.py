@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kamar_hotel',
+    'dashboard',
+    'membuat_komplain',
 
 ]
 
@@ -77,14 +79,12 @@ WSGI_APPLICATION = 'TK4.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'railway',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'AeE1f32gg1db5-222ef5BA2F2*eGfD64',
-        # 'HOST': 'monorail.proxy.rlwy.net',
-        # 'PORT': '40602',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'tk4basdatkelompok',
+        'HOST': 'db.lwwncffkfxoaqkovrloj.supabase.co',
+        'PORT': '5432',
     }
 }
 
