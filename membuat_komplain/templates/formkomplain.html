@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+            .complaint-form {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .complaint-form h2 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .complaint-form input, .complaint-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .complaint-form input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .complaint-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-red-50 min-h-screen">
+
+ 
+	<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+		<a class="text-3xl font-bold leading-none" href="#">
+			<img src="img/hotel-icon.png" class=" h-12" alt="">
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-blue-600 p-3">
+				<img src="img/burger-menu.png" class=" h-6" alt="">
+			</button>
+		</div>
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Dashboard Pengguna</a></li>
+			<li class="text-gray-300">
+				|
+			</li>
+			<li><a class="text-sm text-blue-600 font-bold" href="#">Reservasi Pengguna</a></li>
+			<li class="text-gray-300">
+				|
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Pemesanan Kamar</a></li>
+
+		</ul>
+		<a class="hidden lg:inline-block py-2 px-6 bg-red-500 hover:bg-red-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Logout</a>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<img src="img/hotel-icon.png" class=" h-12" alt="">
+
+				</a>
+				<button class="navbar-close">
+					X
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Dashboard Pengguna</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Reservasi Pengguna</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pemesanan Kamar</a>
+					</li>
+	
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-600 hover:bg-red-700  rounded-xl" href="#">Logout</a>
+				</div>
+
+			</div>
+		</nav>
+	</div>
+
+	<div>
+		<!-- START CODE  -->
+        <div class="container mx-auto px-4">
+            <div class="complaint-form">
+                <h2>Complaint Form</h2>
+                <form action="{% url 'membuat_komplain:mengajukan_komplain' %}" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="cust_email" placeholder="Your Email" value="{{ email }}" readonly>
+                    <input type="text" name="cust_name" placeholder="Nama Customer" value="{{ nama }}" readonly>
+                    <input type="text" name="hotel_name" placeholder="Nama Hotel" required>
+                    <input type="text" name="hotel_branch" placeholder="Nama Cabang" required>
+                    <textarea name="complaint_details" placeholder="Complaint Details" rows="4" required></textarea>
+                    <input type="submit" value="Submit Complaint">
+                </form>
+            </div>
+        </div>
+	</div>
+
+</body>
+<script>
+    // Burger menus
+    document.addEventListener('DOMContentLoaded', function() {
+        // open
+        const burger = document.querySelectorAll('.navbar-burger');
+        const menu = document.querySelectorAll('.navbar-menu');
+    
+        if (burger.length && menu.length) {
+            for (var i = 0; i < burger.length; i++) {
+                burger[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        // close
+        const close = document.querySelectorAll('.navbar-close');
+        const backdrop = document.querySelectorAll('.navbar-backdrop');
+    
+        if (close.length) {
+            for (var i = 0; i < close.length; i++) {
+                close[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        if (backdrop.length) {
+            for (var i = 0; i < backdrop.length; i++) {
+                backdrop[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    });
+    </script>
+</html>
