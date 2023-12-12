@@ -3,7 +3,6 @@ from django.shortcuts import render,redirect
 from utils.query import *
 from django.db import connection
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import KamarHotelForm
 # from supabase import create_client, Client
 
 def kamarhotel_view(request):

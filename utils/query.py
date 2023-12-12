@@ -2,13 +2,6 @@ import psycopg2
 from psycopg2 import Error
 
 try:
-    # Connect to an existing database
-    # connection = psycopg2.connect(user="postgres",
-    #                               password="AeE1f32gg1db5-222ef5BA2F2*eGfD64",
-    #                               host="monorail.proxy.rlwy.net",
-    #                               port="40602",
-    #                               database="railway")
-
     connection = psycopg2.connect(user="postgres",
                                   password="tk4basdatkelompok",
                                   host="db.lwwncffkfxoaqkovrloj.supabase.co",
@@ -35,6 +28,7 @@ try:
     # """)
     # record = cursor.fetchall()
     # print(record)
+
 
 except (Exception, Error) as error:
     print("Error while connecting to PostgreSQL", error)
