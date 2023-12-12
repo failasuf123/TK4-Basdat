@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Register Customer</title>
+</head>
+<body>
+    <h2>Registrasi Hotel</h2>
+            <form method="post" action="{% url 'register_hotel' %}">
+                {% csrf_token %}
+                <label for="hotel_email">Email:</label><br>
+                <input type="email" id="hotel_email" name="hotel_email"><br>
+                <label for="hotel_password">Password:</label><br>
+                <input type="password" id="hotel_password" name="hotel_password"><br>
+                <label for="owner_first_name">Nama Depan Pemilik Hotel:</label><br>
+                <input type="text" id="owner_first_name" name="owner_first_name"><br>
+                <label for="owner_last_name">Nama Belakang Pemilik Hotel:</label><br>
+                <input type="text" id="owner_last_name" name="owner_last_name"><br>
+                <label for="owner_phone">Nomor HP Pemilik Hotel:</label><br>
+                <input type="text" id="owner_phone" name="owner_phone"><br>
+                <label for="business_license">Nomor Izin Usaha:</label><br>
+                <input type="text" id="business_license" name="business_license"><br>
+                <label for="hotel_name">Nama Hotel:</label><br>
+                <input type="text" id="hotel_name" name="hotel_name"><br>
+                <label for="branch">Cabang Hotel:</label><br>
+                <input type="text" id="branch" name="branch"><br>
+                <label for="street_name">Nama Jalan:</label><br>
+                <input type="text" id="street_name" name="street_name"><br>
+                <label for="district">Kecamatan:</label><br>
+                <input type="text" id="district" name="district"><br>
+                <label for="city">Kota:</label><br>
+                <input type="text" id="city" name="city"><br>
+                <label for="province">Provinsi:</label><br>
+                <input type="text" id="province" name="province"><br>
+                <input type="submit" value="Register">
+            </form>
+</body>
+</html>   
+        
+        

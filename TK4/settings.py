@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kamar_hotel',
-
+    'fasilitas_hotel',
+    'main'
 ]
 
 MIDDLEWARE = [
