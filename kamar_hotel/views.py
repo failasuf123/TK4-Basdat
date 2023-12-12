@@ -75,8 +75,6 @@ def form_add_fasilitas_kamar_view(request,id):
         number = id
         nama_fasilitas = request.POST.get('nama_fasilitas')
 
-
-
         # Lakukan query untuk menambahkan room setelah mendefinisikan connection
         try:
             cursor.execute("""
@@ -140,10 +138,7 @@ def form_add_kamar_view(request):
         number = request.POST.get('nomor_kamar')
         price = int(request.POST.get('harga'))
         floor = int(request.POST.get('lantai'))
-        print('THIS IS HOTEL NAME', hotel_name)
-        print('THIS IS HOTEL branch', hotel_branch)
-        print(hotel_name,hotel_branch,number,price,floor)
-        print(type(hotel_name),type(hotel_branch),type(number),type(price),type(floor),'type data')
+
 
         # query2 = f"""
         #      INSERT INTO ROOM ({hotel_name}, {hotel_branch}, {number}, {price},{floor});
