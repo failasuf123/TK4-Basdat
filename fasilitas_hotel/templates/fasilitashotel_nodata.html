@@ -1,0 +1,151 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load static %}
+
+{% block meta %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fasilitas Hotel</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+{% endblock meta %}
+
+{% block content %}
+<body class="bg-gradient-to-r from-blue-50 to-red-50 min-h-screen">
+
+ 
+	<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+		<a class="text-3xl font-bold leading-none" href="#">
+            <img src="{% static 'images/hotel-icon.png' %}" class="h-12" alt="">
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-blue-600 p-3">
+				<img src="{% static 'img/burger-menu.png' %}" class=" h-6" alt="">
+
+			</button>
+		</div>
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Dashboard Hotel</a></li>
+			<li class="text-gray-300">
+                |
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Kamar Hotel</a></li>
+			<li class="text-gray-300">
+                |
+			</li>
+			<li><a class="text-sm text-blue-600 font-bold" href="#">Fasilitas Hotel</a></li>		
+            <li class="text-gray-300">
+                |
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">List Reservasi Hotel</a></li>
+
+		</ul>
+		<a class="hidden lg:inline-block py-2 px-6 bg-red-500 hover:bg-red-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Logout</a>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+                    <img src="{% static 'images/hotel-icon.png' %}" class="h-12" alt="">				</a>
+				<button class="navbar-close">
+                    X
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Dashboard Hotel</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Kamar Hotel</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Fasilitas Hotel</a>
+					</li>
+                    <li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">List Reservasi Hotel</a>
+					</li>
+	
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-600 hover:bg-red-700  rounded-xl" href="#">Logout</a>
+				</div>
+
+			</div>
+		</nav>
+
+	</div>
+
+    <div>
+        <!-- START CODE -->
+		<div>
+            <div class="flex items-center mt-3">
+    
+                <div class="container mx-52 bg-white p-8 rounded shadow-lg text-center">
+            
+                  <h1 class="text-2xl font-bold mb-4">Fasilitas Hotel</h1>
+            
+                  <!-- <h3 class="text-lg mt-5">Daftar Fasilitas Hotel</h3> -->
+            
+                  <img src="{% static 'images/img-nodata.png' %}" class="w-1/2 mx-auto mt-5" alt="">            
+                  <p class="text-xl mt-5 mb-6 italic">"Belum ada fasilitas yang tersedia"</p>
+                 <button href="form_tambah_fasilitas.html" type="button" class="bg-blue-500 text-white py-1 px-3 rounded transition-transform transform hover:scale-105 hover:bg-gradient-to-r from-blue-50 to-red-50"><span class="text-xl">+</span> Tambah Fasilitas</button> 
+            
+            
+                </div>
+            
+              </div>
+    
+        </div>
+    </div>
+        
+</body>
+<script>
+    // Burger menus
+    document.addEventListener('DOMContentLoaded', function() {
+        // open
+        const burger = document.querySelectorAll('.navbar-burger');
+        const menu = document.querySelectorAll('.navbar-menu');
+    
+        if (burger.length && menu.length) {
+            for (var i = 0; i < burger.length; i++) {
+                burger[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        // close
+        const close = document.querySelectorAll('.navbar-close');
+        const backdrop = document.querySelectorAll('.navbar-backdrop');
+    
+        if (close.length) {
+            for (var i = 0; i < close.length; i++) {
+                close[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        if (backdrop.length) {
+            for (var i = 0; i < backdrop.length; i++) {
+                backdrop[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    });
+    </script>
+    {% endblock content %}
+
+</html>
