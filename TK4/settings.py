@@ -9,11 +9,16 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+PRODUCTION = os.getenv('DATABASE_URL') is not None
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +30,7 @@ SECRET_KEY = 'django-insecure-901e890!0-nrqy$1wlhrhp4luty@709=yldymqc*-33313p&uu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,13 +85,23 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'railway',
+        # 'NAME': 'postgres',
         # 'USER': 'postgres',
-        # 'PASSWORD': 'AeE1f32gg1db5-222ef5BA2F2*eGfD64',
-        # 'HOST': 'monorail.proxy.rlwy.net',
-        # 'PORT': '40602',
+        # 'PASSWORD': 'tk4basdatkelompok',
+        # 'HOST': 'db.lwwncffkfxoaqkovrloj.supabase.co',
+        # 'PORT': '5432',
     }
 }
+if PRODUCTION:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True
+    )
+
+    # connection = psycopg2.connect(user="postgres",
+    #                               password="tk4basdatkelompok",
+    #                               host="db.lwwncffkfxoaqkovrloj.supabase.co",
+    #                               port="5432",
+    #                               database="postgres")
 
 
 # Password validation

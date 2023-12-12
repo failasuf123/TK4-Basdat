@@ -101,14 +101,20 @@
 					{% for kamar in data_kamar %}
 						<tr class="border-b">
 							<td class="py-2 px-4 text-center">{{ kamar.0 }}</td>
-							<td class="py-2 px-4 text-center">{{ kamar.2}}</td>
-							<td class="py-2 px-4 text-center">{{ kamar.3 }}</td>
+							<td class="py-2 px-4 text-center">{{ kamar.3}}</td>
 							<td class="py-2 px-4 text-center">{{ kamar.4 }}</td>
+							{%if kamar.5 == 'no facility'%}
+								<td class="py-2 px-4 text-center">{{ kamar.5 }}</td>
+							{%else%}
+								<td class="py-2 px-4 text-center text-red">{{ kamar.5 }}</td>
+							{%endif%}
 							<td class="py-2 px-4 text-center">
-								<a href="add_fasilitas/">
-								<button type="button"  class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
+								<a href="add_fasilitas/{{kamar.0}}">
+									<button type="button"  class="btn-edit bg-blue-500 text-white py-1 px-2 rounded mr-2 hover:bg-blue-700">+ Fasilitas</button>
 								</a>
-								<button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
+								<a href="delete/{{kamar.0}}">
+									<button	button type="button" class="btn-hapus bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Hapus</button>
+								</a>
 							</td>
 						</tr>
 					{% endfor %}
