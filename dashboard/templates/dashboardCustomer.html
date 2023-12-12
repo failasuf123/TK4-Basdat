@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f4;
+		}
+		.container {
+			width: 80%;
+			margin: auto;
+			overflow: hidden;
+		}
+		.dashboard-header {
+			background: #333;
+			color: #fff;
+			padding: 10px 0;
+			text-align: center;
+		}
+		.profile-info {
+			background: #fff;
+			padding: 20px;
+			margin-top: 20px;
+			border-radius: 5px;
+		}
+		.profile-info p {
+			line-height: 1.6;
+		}
+	</style>
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-red-50 min-h-screen">
+
+ 
+	<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+		<a class="text-3xl font-bold leading-none" href="#">
+			<img src="img/hotel-icon.png" class=" h-12" alt="">
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-blue-600 p-3">
+				<img src="img/burger-menu.png" class=" h-6" alt="">
+			</button>
+		</div>
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Dashboard Pengguna</a></li>
+			<li class="text-gray-300">
+				|
+			</li>
+			<li><a class="text-sm text-blue-600 font-bold" href="#">Reservasi Pengguna</a></li>
+			<li class="text-gray-300">
+				|
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Pemesanan Kamar</a></li>
+
+		</ul>
+		<a class="hidden lg:inline-block py-2 px-6 bg-red-500 hover:bg-red-600 text-sm text-white font-bold rounded-xl transition duration-200" href="../../logout">Logout</a>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<img src="img/hotel-icon.png" class=" h-12" alt="">
+
+				</a>
+				<button class="navbar-close">
+					X
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Dashboard Pengguna</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Reservasi Pengguna</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pemesanan Kamar</a>
+					</li>
+	
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-600 hover:bg-red-700  rounded-xl" href="#">Logout</a>
+				</div>
+
+			</div>
+		</nav>
+	</div>
+
+	<div>
+		<!-- START CODE  -->
+		<div class="dashboard-header">
+			<h1>Customer Profile</h1>
+		</div>
+		
+		<div class="container">
+			<div class="profile-info">
+				<p>Nama Depan: <span id="customerFirstName">{{ first_name }}</span></p>
+				<p>Nama Belakang: <span id="customerLastName">{{ last_name }}</span></p>
+				<p>Nomor HP: <span id="customerPhone">{{ phone_num }}</span></p>
+				<p>Email: <span id="customerEmail">{{ email }}</span></p>
+				<p>NIK: <span id="customerIdNumber">{{ nik }}</span></p>
+			</div>
+            <div>
+                {% if messages %}
+                    <div class="messages">
+                    {% for message in messages %}
+                        <div class="{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+		</div>
+	</div>
+
+</body>
+<script>
+    // Burger menus
+    document.addEventListener('DOMContentLoaded', function() {
+        // open
+        const burger = document.querySelectorAll('.navbar-burger');
+        const menu = document.querySelectorAll('.navbar-menu');
+    
+        if (burger.length && menu.length) {
+            for (var i = 0; i < burger.length; i++) {
+                burger[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        // close
+        const close = document.querySelectorAll('.navbar-close');
+        const backdrop = document.querySelectorAll('.navbar-backdrop');
+    
+        if (close.length) {
+            for (var i = 0; i < close.length; i++) {
+                close[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        if (backdrop.length) {
+            for (var i = 0; i < backdrop.length; i++) {
+                backdrop[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    });
+    </script>
+</html>
